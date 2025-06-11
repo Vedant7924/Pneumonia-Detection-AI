@@ -1,0 +1,99 @@
+<div style="background: rgba(255, 255, 255, 0.95); border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); padding: 2.5rem; margin: 2rem auto; border: 4px solid #FF7A00; max-width: 500px;">
+    <h2 style="color: #FF5500; margin-bottom: 1.5rem; text-align: center; font-size: 1.75rem; font-weight: bold;">Login</h2>
+    
+    <form action="{{ url_for('login') }}" method="POST" style="display: flex; flex-direction: column; align-items: center;">
+        <!-- Username Field -->
+        <div style="width: 100%; margin-bottom: 1.5rem;">
+            <label for="username" style="display: block; margin-bottom: 0.5rem; color: #FF5500; font-size: 1.2rem; text-align: left; font-weight: bold;">Username</label>
+            <input type="text" 
+                   id="username" 
+                   name="username" 
+                   required
+                   style="display: block; 
+                          width: 100%;
+                          padding: 0.85rem;
+                          font-size: 1.1rem;
+                          border: 3px solid #FF9A3F;
+                          border-radius: 0.75rem;
+                          background: white;
+                          box-shadow: 0 4px 8px rgba(255,120,0,0.1);
+                          transition: all 0.3s ease;">
+        </div>
+        
+        <!-- Password Field -->
+        <div style="width: 100%; margin-bottom: 1.5rem;">
+            <label for="password" style="display: block; margin-bottom: 0.5rem; color: #FF5500; font-size: 1.2rem; text-align: left; font-weight: bold;">Password</label>
+            <input type="password" 
+                   id="password" 
+                   name="password" 
+                   required
+                   style="display: block; 
+                          width: 100%;
+                          padding: 0.85rem;
+                          font-size: 1.1rem;
+                          border: 3px solid #FF9A3F;
+                          border-radius: 0.75rem;
+                          background: white;
+                          box-shadow: 0 4px 8px rgba(255,120,0,0.1);
+                          transition: all 0.3s ease;">
+        </div>
+        
+        <!-- Remember Me Checkbox -->
+        <div style="width: 100%; margin-bottom: 1.5rem; text-align: left;">
+            <label style="display: flex; align-items: center; color: #FF5500; cursor: pointer; font-size: 1.05rem;">
+                <input type="checkbox" name="remember" style="margin-right: 0.5rem; width: 18px; height: 18px; accent-color: #FF7A00;">
+                <span>Remember me</span>
+            </label>
+        </div>
+        
+        <!-- Login Button -->
+        <button type="submit" 
+                style="background: linear-gradient(90deg, #FF9A3F 0%, #FF5500 100%); 
+                       color: white; 
+                       border: none; 
+                       padding: 1rem 2rem; 
+                       font-size: 1.25rem; 
+                       border-radius: 2rem; 
+                       cursor: pointer; 
+                       box-shadow: 0 6px 12px rgba(255,85,0,0.3); 
+                       transition: transform 0.2s, box-shadow 0.2s; 
+                       font-weight: bold; 
+                       width: 100%;
+                       text-transform: uppercase;
+                       letter-spacing: 1px;">
+            Login
+        </button>
+    </form>
+    
+    <!-- Divider -->
+    <div style="display: flex; align-items: center; margin: 1.75rem 0;">
+        <div style="flex-grow: 1; height: 2px; background: linear-gradient(to right, rgba(255,154,63,0.1), rgba(255,154,63,0.8), rgba(255,154,63,0.1));"></div>
+        <span style="padding: 0 15px; color: #FF7A00; font-weight: bold;">OR</span>
+        <div style="flex-grow: 1; height: 2px; background: linear-gradient(to left, rgba(255,154,63,0.1), rgba(255,154,63,0.8), rgba(255,154,63,0.1));"></div>
+    </div>
+    
+    <!-- Google Login Button -->
+    <a href="{{ url_for('google_login') }}" 
+       style="display: flex; 
+              align-items: center; 
+              justify-content: center; 
+              background-color: white; 
+              color: #444; 
+              border: 2px solid #FFBE7A; 
+              border-radius: 2rem; 
+              padding: 0.85rem 1.5rem; 
+              font-size: 1.1rem; 
+              text-decoration: none; 
+              box-shadow: 0 4px 8px rgba(255,120,0,0.1); 
+              width: 100%; 
+              margin: 0 auto;
+              transition: all 0.3s ease;">
+        <img src="{{ url_for('static', filename='images/google-logo.png') }}" alt="Google" style="height: 24px; margin-right: 10px;">
+        Login with Google
+    </a>
+    
+    <!-- Register Link -->
+    <div style="margin-top: 1.75rem; text-align: center;">
+        <p style="color: #FF5500; font-size: 1.05rem;">Don't have an account? <a href="{{ url_for('register') }}" style="color: #FF7A00; text-decoration: none; font-weight: bold; border-bottom: 2px solid transparent; transition: border-color 0.3s;">Register here</a></p>
+    </div>
+</div>

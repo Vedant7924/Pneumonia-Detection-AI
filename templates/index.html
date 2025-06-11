@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block head %} <title>Pneumonia Detection Using Deep Learning</title> {% endblock %}
+
+{% block body %}
+<!-- Description Section -->
+<div style="background: rgba(255, 255, 255, 0.9); border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 1.1rem; color: #182848; margin-bottom: 1rem; line-height: 1.6; text-align: left;">
+        Pneumonia is a serious respiratory infection that affects the lungs' air sacs (alveoli). When infected, these air sacs can fill with fluid or pus, causing symptoms such as:
+    </p>
+    <ul style="text-align: left; color: #4b6cb7; font-size: 1.1rem; margin-bottom: 1rem; padding-left: 2rem;">
+        <li style="margin-bottom: 0.5rem;">Difficulty breathing</li>
+        <li style="margin-bottom: 0.5rem;">Chest pain when breathing or coughing</li>
+        <li style="margin-bottom: 0.5rem;">Cough with phlegm production</li>
+        <li style="margin-bottom: 0.5rem;">Fever and chills</li>
+    </ul>
+    <p style="font-size: 1.1rem; color: #182848; margin-bottom: 0; text-align: left;">
+        Early detection is crucial for effective treatment. Our deep learning model analyzes chest X-ray images to help identify potential cases of pneumonia with high accuracy.
+    </p>
+</div>
+
+<!-- Upload Form -->
+<div style="background: rgba(255, 255, 255, 0.9); border-radius: 1rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); padding: 2rem; margin: 2rem auto; border: 3px solid #4b6cb7; max-width: 600px;">
+    <form action="{{ url_for('upload_file')}}" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
+        <div style="width: 100%; text-align: center;">
+            <label for="imageFile" style="display: block; margin-bottom: 1rem; color: #182848; font-size: 1.2rem; font-weight: bold;">Upload your chest X-ray image for instant analysis</label>
+            <div style="display: inline-block; position: relative; width: 80%; margin: 0 auto;">
+                <input type="file" 
+                       id="imageFile" 
+                       name="imageFile" 
+                       accept=".png, .jpg, .jpeg"
+                       required
+                       style="display: block; 
+                              width: 100%;
+                              padding: 0.75rem;
+                              font-size: 1rem;
+                              border: 2px solid #4b6cb7;
+                              border-radius: 0.5rem;
+                              background: white;
+                              text-align: center;
+                              margin: 0 auto;
+                              cursor: pointer;
+                              box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            </div>
+            <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Supported formats: PNG, JPG, JPEG</p>
+        </div>
+        <button type="submit" 
+                style="background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); color: white; border: none; padding: 1rem 2rem; font-size: 1.25rem; border-radius: 2rem; cursor: pointer; margin-top: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; font-weight: bold;">
+            Analyze Image
+        </button>
+    </form>
+</div>
+{% endblock %}
