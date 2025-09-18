@@ -112,6 +112,6 @@ To run this application firstly execute `python app.py`, after which the flask b
 
 ## Contact
 
-Sarthak Pimprikar - [LinkedIn](www.linkedin.com/in/sarthak-pimprikar)
+Sarthak Pimprikar - [LinkedIn](https://www.linkedin.com/in/sarthak-pimprikar)
 
 Kaggle Kernel: [https://www.kaggle.com/rajpraveenpradhan/keras-based-cnn-model-for-pneumonia-detection](https://www.kaggle.com/rajpraveenpradhan/keras-based-cnn-model-for-pneumonia-detection)
