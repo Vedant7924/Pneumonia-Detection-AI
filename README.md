@@ -1,117 +1,81 @@
-![GitHub Repo stars](https://img.shields.io/github/stars/rppradhan08/pneumonia-detection)
-![GitHub forks](https://img.shields.io/github/forks/rppradhan08/pneumonia-detection?color=green)
-![contributors-shield](https://img.shields.io/github/contributors/rppradhan08/pneumonia-detection)
-[![LinkedIn][linkedin-shield]](https://in.linkedin.com/in/raj-praveen-pradhan-306625101)
+# PnuemoScan AI - Pneumonia Detection System
 
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555)](https://www.linkedin.com/in/vedant-shinde-62855b251/)
+![Python](https://img.shields.io/badge/Python-3.11-blue.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
+![Flask](https://img.shields.io/badge/Flask-Web%20App-lightgrey.svg)
 
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/rppradhan08/pneumonia-detection">
-    <img src="https://raw.githubusercontent.com/rppradhan08/pneumonia-detection/master/images/logo.PNG" alt="Logo" width="200px" height="100px">
-  </a>
+**PnuemoScan AI** is an intelligent diagnostic assistance tool designed to detect Pneumonia from chest X-ray images. Built using Deep Learning (CNN) and Transfer Learning (VGG16), the platform provides near-instant analysis with a premium, medical-grade user interface. It bridges the gap between complex neural networks and clinical usability through a responsive web-based environment.
 
-  <p align="center">
-    Pneumonia Detection using CNN
-    <br />
-    <a href="https://github.com/rppradhan08/pneumonia-detection"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/rppradhan08/pneumonia-detection">View Demo</a>
-    ·
-    <a href="https://github.com/rppradhan08/pneumonia-detection/issues">Report Bug</a>
-  </p>
-</p>
+---
 
-<!-- TABLE OF CONTENTS -->
+## 🚀 Key Features
 
-## Table of Contents
+*   **High Accuracy**: Utilizing a VGG16 Convolutional Neural Network trained on 5,800+ expert-labeled images.
+*   **Premium UI**: Modern glassmorphic design optimized for clinical focus and patient data visualization.
+*   **Instant Analysis**: Drag-and-drop X-ray uploads with real-time diagnostic reporting.
+*   **Responsive Engine**: Cross-platform compatibility for mobile and desktop diagnostics.
 
-- [Table of Contents](#table-of-contents)
-- [About The Project](#about-the-project)
-  - [Steps involved](#steps-involved)
-  - [Tools used](#tools-used)
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
-  - [Data Analysis and Model Building](#data-analysis-and-model-building)
-  - [Application Development](#application-development)
-- [Usage](#usage)
-- [Contact](#contact)
+---
 
-<!-- ABOUT THE PROJECT -->
+## 🛠️ Technology Stack
 
-## About The Project
+*   **Core AI**: Python, TensorFlow, Keras
+*   **Computer Vision**: OpenCV (Pre-processing & Normalization)
+*   **Web Framework**: Flask
+*   **Frontend**: Custom CSS (Modern Glassmorphism), HTML5
+*   **Deployment**: Gunicorn, Render
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/rppradhan08/pneumonia-detection/master/images/person1661_virus_2872.jpeg" height="250px" width="300px">
-</p>
-This project uses <a href="https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia">Chest X-Ray dataset</a> from kaggle.
-The dataset is organized into 3 folders (train, val & test) and contains subfolders for each image category (Pneumonia/Normal). There are 5,863 X-Ray images (JPEG) and 2 categories (Pneumonia/Normal). These images are used for building an CNN model using keras to detect pneumonia in patients based on X-ray reports. After model building the best performing model is used to build a flask base web application.
+---
 
-### Steps involved
+## 📂 Project Structure
 
-- Reading data from source and preprocessing it using OpenCV.
-- Performing data preprocessing before feeding the data to the model.
-- Building sequential model architecture using keras.
-- Using data augmentating to prevent the model from overfitting during training phase.
-- Creating web application using flask to detect Pneumonia upon receiving the preprocessed X-ray.
+- `app.py`: Main Flask application handles image routing and model inference.
+- `vgg16_pneumonia.py`: CNN architecture using Transfer Learning.
+- `Pneumonia_Detection_CNN.ipynb`: Detailed training, data augmentation, and evaluation notebook.
+- `static/styles.css`: Premium custom design system.
+- `model.h5`: Pre-trained neural network weights.
 
-### Tools used
+---
 
-Following are the tools/frameworks used in developing the application:
+## 💻 Getting Started
 
-- [CSS](https://en.wikipedia.org/wiki/CSS)
-- [Python](https://www.python.org/)
-- [Flask](https://palletsprojects.com/p/flask/)
-- [HTML](https://en.wikipedia.org/wiki/HTML)
-- [OpenCV](https://opencv-python-tutroals.readthedocs.io/en/latest/)
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Vedant7924/Pneumonia-Detection-AI.git
+   ```
 
-## Getting Started
+2. **Setup Virtual Environment**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+   ```
 
-### Installation
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-For proper execution of application firstly create an environment, then to install prerequisite libraries execute below command in terminal.
+4. **Run Locally**:
+   ```bash
+   python app.py
+   ```
+   Open `http://127.0.0.1:5000` in your browser.
 
-```
-pip install -r requirements.txt
-```
+---
 
-### Data Analysis and Model Building
+## 📊 Dataset Acknowledgement
 
-Refer `Pneumonia_Detection_CNN.ipynb` to find details regarding data analysis and model building.
+This project uses the **Guangzhou Women and Children’s Medical Center** dataset, comprising 5,863 JPEG chest X-rays categorized into two classes (Pneumonia/Normal), meticulously graded by three expert physicians.
 
-Since this is a classification problem, to check model performance `Confusion Matrix` and `Classification Report` are used.
+---
 
-<p align="center">
-<b>Confusion Matrix</b><br>
-<img src="https://raw.githubusercontent.com/rppradhan08/pneumonia-detection/master/images/cunfusion_mat.png" height="200px">
-</p>
+## 📬 Contact
 
-### Application Development
+**Vedant Shinde**  
+- **LinkedIn**: [linkedin.com/in/vedant-shinde-62855b251/](https://www.linkedin.com/in/vedant-shinde-62855b251/)
+- **GitHub**: [github.com/Vedant7924](https://github.com/Vedant7924)
 
-After model development, the web application is developed using `flask` which is a python based web-framework. For source code refer `app.py`.
+---
 
-Below are few snapshots of application in use:
-
-- Step 1 Uploading X-Ray
-  <p align="center">
-    <img src="https://raw.githubusercontent.com/rppradhan08/pneumonia-detection/master/images/home.PNG" height="300px">
-  </p>
-- Step 2 Displaying Result
-  <p align="center">
-    <img src="https://raw.githubusercontent.com/rppradhan08/pneumonia-detection/master/images/normal.PNG" height="200px">
-  </p>
-
-<!-- CONTACT -->
-
-## Usage
-
-To run this application firstly execute `python app.py`, after which the flask built-in server would start hosting the application at localhost i.e.
-`http://127.0.0.1:5000/`
-
-## Contact
-
-Sarthak Pimprikar - [LinkedIn](https://www.linkedin.com/in/sarthak-pimprikar)
-
-Kaggle Kernel: [https://www.kaggle.com/rajpraveenpradhan/keras-based-cnn-model-for-pneumonia-detection](https://www.kaggle.com/rajpraveenpradhan/keras-based-cnn-model-for-pneumonia-detection)
+> **Disclaimer**: This tool is for educational/research purposes only and should not replace professional medical diagnosis by a qualified radiologist.
