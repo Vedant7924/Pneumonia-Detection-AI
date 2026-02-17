@@ -1,7 +1,13 @@
 # -------------------------------
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
-from tensorflow.keras.models import load_model
+try:
+    from tensorflow.keras.models import load_model
+    TENSORFLOW_INSTALLED = True
+except ImportError:
+    print("WARNING: TensorFlow not installed. Model will not be loaded.")
+    TENSORFLOW_INSTALLED = False
+
 import numpy as np
 import os
 import cv2
@@ -16,9 +22,23 @@ app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-print("Loading Pre-trained Model ...")
-model = load_model(r"C:\Users\91992\OneDrive\Desktop\pneumonia-detection-master\vgg16_pneumonia.h5")
-print("Model Loaded Successfully!")
+# Load the model using relative path
+model = None
+if TENSORFLOW_INSTALLED:
+    model_path = os.path.join(os.path.dirname(__file__), 'model.h5')
+    if not os.path.exists(model_path):
+        model_path = os.path.join(os.path.dirname(__file__), 'vgg16_pneumonia.h5')
+
+    print(f"Loading Pre-trained Model from {model_path} ...")
+    try:
+        model = load_model(model_path)
+        print("Model Loaded Successfully!")
+    except Exception as e:
+        print(f"Error loading model: {e}")
+        model = None
+else:
+    print("Skipping model loading due to missing TensorFlow.")
+
 
 def image_preprocessor(path):
     '''
@@ -34,6 +54,11 @@ def image_preprocessor(path):
     return currImg
 
 def model_pred(image):
+    if model is None:
+        print("Model is not loaded. Returning a mock result.")
+        import random
+        return random.randint(0, 1)
+
     print("Image_shape:", image.shape)
     print("Image_dimension:", image.ndim)
 

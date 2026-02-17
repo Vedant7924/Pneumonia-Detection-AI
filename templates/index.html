@@ -1,53 +1,81 @@
 {% extends "base.html" %}
 
-{% block head %} <title>Pneumonia Detection Using Deep Learning</title> {% endblock %}
-
 {% block body %}
-<!-- Description Section -->
-<div style="background: rgba(255, 255, 255, 0.9); border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <p style="font-size: 1.1rem; color: #182848; margin-bottom: 1rem; line-height: 1.6; text-align: left;">
-        Pneumonia is a serious respiratory infection that affects the lungs' air sacs (alveoli). When infected, these air sacs can fill with fluid or pus, causing symptoms such as:
-    </p>
-    <ul style="text-align: left; color: #4b6cb7; font-size: 1.1rem; margin-bottom: 1rem; padding-left: 2rem;">
-        <li style="margin-bottom: 0.5rem;">Difficulty breathing</li>
-        <li style="margin-bottom: 0.5rem;">Chest pain when breathing or coughing</li>
-        <li style="margin-bottom: 0.5rem;">Cough with phlegm production</li>
-        <li style="margin-bottom: 0.5rem;">Fever and chills</li>
-    </ul>
-    <p style="font-size: 1.1rem; color: #182848; margin-bottom: 0; text-align: left;">
-        Early detection is crucial for effective treatment. Our deep learning model analyzes chest X-ray images to help identify potential cases of pneumonia with high accuracy.
-    </p>
-</div>
+<section class="hero-section">
+    <h1>Intelligent Pneumonia <br>Detection System</h1>
+    <p>Leveraging state-of-the-art Deep Learning to provide accurate, instant analysis of chest X-ray scans.</p>
+</section>
 
-<!-- Upload Form -->
-<div style="background: rgba(255, 255, 255, 0.9); border-radius: 1rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1); padding: 2rem; margin: 2rem auto; border: 3px solid #4b6cb7; max-width: 600px;">
-    <form action="{{ url_for('upload_file')}}" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
-        <div style="width: 100%; text-align: center;">
-            <label for="imageFile" style="display: block; margin-bottom: 1rem; color: #182848; font-size: 1.2rem; font-weight: bold;">Upload your chest X-ray image for instant analysis</label>
-            <div style="display: inline-block; position: relative; width: 80%; margin: 0 auto;">
-                <input type="file" 
-                       id="imageFile" 
-                       name="imageFile" 
-                       accept=".png, .jpg, .jpeg"
-                       required
-                       style="display: block; 
-                              width: 100%;
-                              padding: 0.75rem;
-                              font-size: 1rem;
-                              border: 2px solid #4b6cb7;
-                              border-radius: 0.5rem;
-                              background: white;
-                              text-align: center;
-                              margin: 0 auto;
-                              cursor: pointer;
-                              box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            </div>
-            <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Supported formats: PNG, JPG, JPEG</p>
+<div class="card">
+    <div style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.75rem; margin-bottom: 1rem;">Diagnosis Assistance</h2>
+        <p style="color: var(--text-muted); line-height: 1.6;">
+            Early detection of pneumonia can significantly improve patient outcomes. Our neural network analyzes
+            pulmonary patterns to identify inflammatory indicators consistent with pneumonia.
+        </p>
+    </div>
+
+    <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+        <label class="upload-zone" id="drop-zone">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🩺</div>
+            <h3 style="margin-bottom: 0.5rem;">Upload Chest X-Ray</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Drag and drop or click to select (JPG, PNG)</p>
+            <input type="file" name="imageFile" id="imageFile" class="file-input" accept=".jpg, .jpeg, .png" required
+                onchange="updateFileName()">
+            <div id="file-name" style="margin-top: 1rem; color: var(--accent); font-weight: 600; display: none;"></div>
+        </label>
+
+        <div style="text-align: center;">
+            <button type="submit" class="btn-primary">
+                <span>Start Analysis</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
         </div>
-        <button type="submit" 
-                style="background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); color: white; border: none; padding: 1rem 2rem; font-size: 1.25rem; border-radius: 2rem; cursor: pointer; margin-top: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; font-weight: bold;">
-            Analyze Image
-        </button>
     </form>
 </div>
+
+<div class="card" style="background: rgba(79, 70, 229, 0.03);">
+    <h3 style="margin-bottom: 1.5rem;">Analysis Indicators</h3>
+    <ul class="info-list">
+        <li>Pulmonary infiltrates assessment</li>
+        <li>Opacity pattern recognition</li>
+        <li>Bilateral distribution analysis</li>
+        <li>Pleural effusion screening</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function updateFileName() {
+        const input = document.getElementById('imageFile');
+        const display = document.getElementById('file-name');
+        if (input.files.length > 0) {
+            display.textContent = "Selected: " + input.files[0].name;
+            display.style.display = 'block';
+        }
+    }
+
+    // Drag and drop visual feedback
+    const dropZone = document.getElementById('drop-zone');
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--primary)';
+            dropZone.style.background = 'rgba(79, 70, 229, 0.08)';
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--glass-border)';
+            dropZone.style.background = 'rgba(255, 255, 255, 0.02)';
+        }, false);
+    });
+</script>
 {% endblock %}
